@@ -31,3 +31,15 @@ I decided to make a graphql server to interact with the data provided in the CSV
 - ./src/utils - wrote some utils that make writing the query logic easier.
 
 ## Explaining The GraphQl Playground
+
+https://drive.google.com/file/d/1OsPBC4Zx8Oxcn6sYmoXaCjAQ3gPPjTFg/view?usp=sharing 
+
+## If I had more time
+
+1. Add unit tests/e2e tests for the GraphQL service
+2. Query by Location (latitude, longitude)
+3. Build a React Client 
+- The Client would simply display a data table with filters
+- It would use tailwindCSS, Apollo Client, and Jotei Atoms for state management.
+- React Testing Library for testing
+4. Add linting
