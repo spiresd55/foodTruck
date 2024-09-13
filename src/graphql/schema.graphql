@@ -1,0 +1,110 @@
+type FoodTruck {
+    locationId: Int
+    applicant: String
+    facilityType: String
+    cnn: Int
+    locationDescription: String
+    address: String
+    block: String
+    blockLot: String
+    lot: String
+    permit: String
+    status: String
+    foodItems: String
+    x: Float
+    y: Float
+    latitude: Float
+    longitude: Float
+    schedule: String
+    daysHours: String
+    NOISent: String
+    approved: String  # Convert to Date
+    received: Float
+    priorPermit: Boolean
+    expirationDate: String # Convert to Date
+    firePreventionDistricts: Int
+    policeDistricts: Int
+    zipCodes: Int
+    supervisorDistricts: Int
+    oldNeighborhoods: Int
+  }
+
+  enum NumberSearchType {
+    equalTo
+    greaterThan
+    lessThan
+    greaterThanEqualTo
+    lessThanEqualTo
+  }
+
+  enum StatusType {
+    approved
+    requested
+    expired
+  }
+
+  enum EnumSearchType {
+    is
+    not
+  }
+
+  input AddressSearch {
+    value: String!
+  }
+
+  input NumberSearch {
+    value: Float!
+    filterType: NumberSearchType!
+  }
+
+  input LocationSearch {
+    latitude: Float!
+    longitude: Float!
+    within: Float!
+    address: String!
+  }
+
+  input StatusSearch {
+    type: StatusType
+    filterType: EnumSearchType
+  }
+
+  input foodTruckInput {
+    itemsPerPage: Int
+    page: Int
+    address: AddressSearch
+    zipCodes: NumberSearch
+    supervisorDistricts: NumberSearch
+    oldNeighborhoods: NumberSearch
+    policeDistricts: NumberSearch
+    location: LocationSearch
+    status: StatusSearch
+  }
+
+  enum FieldType {
+    address
+    zipCodes
+    supervisorDistricts
+    oldNeighborhoods
+    policeDistricts
+    latitude
+    longitude
+    status
+  }
+
+  enum FilterType {
+    within
+    greaterThan
+    lessThan
+    equalTo
+    like
+    not
+  }
+
+  input Filters {
+    field: FieldType
+  }
+
+  type Query {
+      foodTruck(input: foodTruckInput): [FoodTruck]!
+  }
